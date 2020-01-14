@@ -17,12 +17,9 @@ def cipher(word, offset) :
     result = ''
 
     for c in word :
-        if not c.isalpha() :
-            error(c + ' is not alphabetic!')
-
         result = result + shift(c, offset)
 
-    """Looks cooler but requires c.isalpha() in shift(...) instead."""
+    """Looks cooler."""
     #result = ''.join([shift(c, offset) for c in word])
 
     return str(result)
@@ -37,9 +34,9 @@ if __name__ == "__main__" :
         error('Usage: python ceasar.py <string> <offset>')
 
     word = sys.argv[1]
-    offset = int(sys.argv[2])
+    offset = sys.argv[2]
 
-    if not isinstance(offset, int) :
+    if not offset.isdigit() :
         error('Offset has to be a number.')
 
-    print(cipher(word, offset))
+    print(cipher(word, int(offset)))
