@@ -30,7 +30,6 @@ def findAmicablePairs (target) :
         if  key == value \
             or value <= 0 or value > target \
             or value not in numberToSum \
-            or key == value \
             or not numberToSum[value] == key :
 
             continue
