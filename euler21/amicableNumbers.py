@@ -26,6 +26,7 @@ def findAmicablePairs (target) :
     pairSet = set()
     for key, value in numberToSum.items() :
 
+        """ Can this horrendous if-clause be improved? """
         if  key == value \
             or value <= 0 or value > target \
             or value not in numberToSum \
