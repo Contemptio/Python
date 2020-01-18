@@ -1,6 +1,6 @@
 """
     @author Zimon Kuhs
-    @answer ?
+    @answer 871198282
     @date   2020-01-18
 """
 
@@ -14,7 +14,7 @@ def readNames(fileName) :
         openedFile = open(fileName, 'r')
         lines = openedFile.readlines()
     except IOError as exception :
-        error("Could not access file: %s" % str(exception))
+        error("Unable to access file: %s" % str(exception))
     finally :
         openedFile.close()
 
@@ -28,6 +28,22 @@ def getNames(string) :
     names[lastPos] = names[lastPos].replace("\"", "")
 
     return names
+
+def score(name) :
+    result = 0
+
+    for c in name :
+        result += (ord(c) - 64)
+
+    return result
+
+def scores(names) :
+    result = []
+
+    for i in range(0, len(names)) :
+        result.append((i + 1) * score(names[i]))
+
+    return result
 
 def error(message) :
     print(message)
@@ -45,5 +61,6 @@ if __name__ == "__main__" :
 
     names = readNames(fileName)
     names = getNames(names[0])
+    nameScores = scores(sorted(names))
 
-    print(len(names))
+    print(sum(nameScores))
