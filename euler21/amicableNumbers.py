@@ -1,5 +1,6 @@
 """
     @author Zimon Kuhs
+    @answer 31626
     @date   2020-01-17
 """
 
@@ -18,24 +19,29 @@ def findAmicablePairs (target) :
     numberToSum = {}
 
     for i in range(1, target) :
-        divisorSum = sum(evenDivisors(i))
+        if i in numberToSum :
+            continue
 
-        if divisorSum < target:
-            numberToSum[i] = divisorSum
+        divisorSum1 = sum(evenDivisors(i))
+        divisorSum2 = sum(evenDivisors(divisorSum1))
+
+        if divisorSum1 == divisorSum2 :
+            continue
+
+        if divisorSum1 < target :
+            numberToSum[i] = divisorSum1
+
+            if divisorSum2 < target :
+                numberToSum[divisorSum1] = divisorSum2
 
     pairSet = set()
     for key, value in numberToSum.items() :
 
-        """ Can this horrendous if-clause be improved? """
-        if  key == value \
-            or value <= 0 or value > target \
-            or value not in numberToSum \
-            or not numberToSum[value] == key :
+        if  value in numberToSum \
+            and numberToSum[value] == key :
 
-            continue
-
-        pairSet.add(key)
-        pairSet.add(value)
+            pairSet.add(key)
+            pairSet.add(value)
 
     return sum(pairSet)
 
@@ -53,6 +59,4 @@ if __name__ == "__main__" :
     if len(sys.argv) != 2 :
         error("Usage: amicableNumbers.py <top number>")
 
-    number = toInteger(sys.argv[1])
-
-    print(findAmicablePairs(number))
+    print(findAmicablePairs(toInteger(sys.argv[1])))
