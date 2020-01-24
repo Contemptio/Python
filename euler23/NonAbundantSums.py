@@ -1,6 +1,6 @@
 """
     @author Zimon Kuhs
-    @answer ?
+    @answer 4179871
     @date   2020-01-18
 """
 

@@ -3,11 +3,14 @@ import sys
 
 def shift(letter, offset) :
 
+    if not letter.isalpha() :
+        return letter
+
     digit = ord(letter)
     base = 64 if digit < 91 else 96
-    shift = (digit - base + offset) % 25
+    asc = base + (digit - base + offset) % 25
 
-    return chr(base + shift)
+    return chr(asc)
 
 def cipher(word, offset) :
 
@@ -17,7 +20,7 @@ def cipher(word, offset) :
     result = ''
 
     for c in word :
-        result = result + shift(c, offset)
+        result += shift(c, offset)
 
     """Looks cooler."""
     #result = ''.join([shift(c, offset) for c in word])
