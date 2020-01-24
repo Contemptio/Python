@@ -15,14 +15,16 @@ KCAL_CARBS = 4
 KCAL_FAT = 4
 KCAL_FIBER = 2
 KCAL_PROTEIN = 4
-RATIO = 0.75
+FAT_PER_KG = 0.5
+FIBER_PER_KCAL = 0.014
+CARB_PER_KCAL = 0.25
 
 def macros(weight, opts) :
     calories = int(toInt(opts["kcal"]) * weight * toFloat(opts["ratio"]))
-    fat = weight // 2
-    fiber = calories * 0.014
+    fat = weight * FAT_PER_KG
+    fiber = calories * FIBER_PER_KCAL
     protein = weight
-    carbs = (calories - (fat * KCAL_FAT + fiber * KCAL_FIBER + protein * KCAL_PROTEIN)) // 4
+    carbs = (calories - (fat * KCAL_FAT + fiber * KCAL_FIBER + protein * KCAL_PROTEIN)) * CARB_PER_KCAL
 
     return {
         "Calories" : int(calories),
