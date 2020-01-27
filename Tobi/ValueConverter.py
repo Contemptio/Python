@@ -46,6 +46,8 @@ def getOpts(argv) :
 
         if opt == "-v" :
             func = toInts
+        else :
+            error("Invalid program argument %s." % opt)
 
         result[opt] = func(arg)
 
@@ -55,7 +57,7 @@ def toInt(number) :
     try :
         return int(number)
     except Exception as e :
-        error("Expected an integer, got " + str(number) + ": " + str(e))
+        error("Expected an integer, got %s: %s." % (str(number), str(e)))
 
 def toInts(string) :
     try :
