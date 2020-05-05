@@ -5,6 +5,8 @@
 """
 
 import sys
+from util.general import error, NotYetImplemented
+from util.string import swapChars
 
 def collectPermutations(string, permutations, i, length) :
 
@@ -12,35 +14,21 @@ def collectPermutations(string, permutations, i, length) :
         permutations.append(string)
     else :
         for j in range(i, length - 1) :
-            string = swap(string, i, j)
+            string = swapChars(string, i, j)
             collectPermutations(string, permutations, i + 1, length)
-            string = swap(string, i, j)
+            string = swapChars(string, i, j)
 
-def swap(string, pos1, pos2) :
-    result = ""
-    print(string)
+def findPermutations(string) :
+    if 1 is 1 :
+        raise NotYetImplemented()
 
-    for i in range(0, len(string) - 1) :
-        if i == pos1 :
-            toAdd = string[pos2]
-        elif i == pos2 :
-            toAdd = string[pos1]
-        else :
-            toAdd = string[i]
-        result = result + toAdd
-
-    return result
-
-def error(message) :
-    print(message)
-    sys.exit(1)
+    permutations = []
+    collectPermutations(string, permutations, 0, len(string))
 
 if __name__ == "__main__" :
     args = sys.argv
 
     if len(args) >= 2 :
-        print("Usage: py LexicographicPermutations.py.")
+        error("Usage: py LexicographicPermutations.py.")
 
-    string = "0123456789"
-    permutations = []
-    collectPermutations(string, permutations, 0, len(string))
+    print(findPermutations("0123456789"))

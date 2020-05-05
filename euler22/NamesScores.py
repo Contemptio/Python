@@ -7,6 +7,8 @@
 import os
 import sys
 
+from util.general import error
+
 def readNames(fileName) :
     lines = []
 
@@ -45,17 +47,7 @@ def scores(names) :
 
     return result
 
-def error(message) :
-    print(message)
-    sys.exit(1)
-
-if __name__ == "__main__" :
-    args = sys.argv
-
-    if len(args) != 2 :
-        error("Usage: python NamesScores.py <file_name>")
-
-    fileName = args[1]
+def sumNamesScores(fileName) :
     if not os.path.isfile(fileName) :
         error("No such file: %s" % fileName)
 
@@ -63,4 +55,12 @@ if __name__ == "__main__" :
     names = getNames(names[0])
     nameScores = scores(sorted(names))
 
-    print(sum(nameScores))
+    return sum(nameScores)
+
+if __name__ == "__main__" :
+    args = sys.argv
+
+    if len(args) != 2 :
+        error("Usage: python NamesScores.py <file_name>")
+
+    print(sumNamesScores(args[1]))

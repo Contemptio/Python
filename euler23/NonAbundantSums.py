@@ -5,6 +5,7 @@
 """
 
 import sys
+from util.general import error, toInteger
 
 def properDivisors(number) :
     result = set()
@@ -50,16 +51,13 @@ def getSums(numbers, target) :
 def getMissing(numbers, target) :
     return  [i for i in range(1, target) if i not in numbers] 
 
-def error(message) :
-    print(message)
-    sys.exit(1)
-
-if __name__ == "__main__" :
-    if len(sys.argv) != 1 :
-        print("Warning: this program ignores input.")
-
-    target = 28123
+def findNonAbundantSum(target) :
     abundants = findAbundants(target)
     abundantSums = getSums(abundants, target)
-    result = getMissing(abundantSums, target)
-    print(sum(result))
+    return sum(getMissing(abundantSums, target))
+
+if __name__ == "__main__" :
+    if len(sys.argv) != 2 :
+        error("Usage: python NonAbundantSums.py <target number>.")
+
+    print(findNonAbundantSum(toInteger(sys.argv[1])))

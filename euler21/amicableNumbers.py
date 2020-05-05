@@ -5,7 +5,7 @@
 """
 
 import sys
-from Util.General import *
+from util.general import *
 
 def evenDivisors(nominator) :
     result = []
