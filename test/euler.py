@@ -1,9 +1,9 @@
 import os, sys, unittest
 
-from euler21.AmicableNumbers import findAmicablePairs
-from euler22.NamesScores import sumNamesScores
-from euler23.NonAbundantSums import findNonAbundantSum
-from euler24.LexicographicPermutations import findPermutations
+from euler21.amicableNumbers import findAmicablePairs
+from euler22.namesScores import sumNamesScores
+from euler23.nonAbundantSums import findNonAbundantSum
+from euler24.lexicographicPermutations import findPermutations
 from . import toInteger
 
 class TestEuler(unittest.TestCase):

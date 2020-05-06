@@ -1,4 +1,4 @@
-from util.general import error
+from . import error
 
 def toFloat(string):
     try: 
