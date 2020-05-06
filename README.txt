@@ -1,0 +1,1 @@
+To remove pycaches, execute 'git rm --cached */__pycache__/*'.
