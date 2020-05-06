@@ -4,21 +4,21 @@ from euler21.AmicableNumbers import findAmicablePairs
 from euler22.NamesScores import sumNamesScores
 from euler23.NonAbundantSums import findNonAbundantSum
 from euler24.LexicographicPermutations import findPermutations
-from util.general import toInteger
+from . import toInteger
 
-class TestStringMethods(unittest.TestCase):
+class TestEuler(unittest.TestCase):
 
-    def testEuler21(self) :
+    def test21(self) :
         self.assertEqual(findAmicablePairs(10000), 31626)
     
-    def testEuler22(self) :
+    def test22(self) :
         path = 'euler22/names.txt'
         self.assertTrue(os.path.exists(path), \
             'Missing test file %s.' % path)
         self.assertEqual(sumNamesScores(path), 871198282)
 
-    def testEuler23(self) :
+    def test23(self) :
         self.assertEqual(findNonAbundantSum(28123), 4179871)
 
-    def testEuler24(self) :
+    def test24(self) :
         self.assertEqual(findPermutations("!"), "?")

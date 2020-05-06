@@ -5,6 +5,8 @@
 
 import getopt, sys
 
+from . import error, toFloat, toInteger
+
 KCAL_PER_MACRO = {
     "Carbohydrates" : 4,
     "Fat" : 9,
@@ -24,7 +26,7 @@ FAT_PER_KCAL = 1 / KCAL_PER_MACRO["Fat"]
 def macros(weight, opts) :
     macros = {}
 
-    macros["Calories"] = int(toInt(opts["kcal"]) * \
+    macros["Calories"] = int(toInteger(opts["kcal"]) * \
                 weight * toFloat(opts["ratio"]))
     macros["Carbohydrates"] = 0
     macros["Fat"] = weight * (1 if opts["highFat"] else 0.5)
@@ -98,31 +100,3 @@ def convertWeight(weight, unit) :
         error("Invalid unit: %s." % unit)
 
     return weight * KG_PER_LB
-
-def toFloat(number) :
-    try :
-        return float(number)
-    except Exception as e :
-        error("Expected a number, got " + str(number) + ": " + str(e))
-
-def toInt(number) :
-    try :
-        return int(number)
-    except Exception as e :
-        error("Expected an integer, got " + str(number) + ": " + str(e))
-
-def error(message) :
-    print(message)
-    sys.exit(1)
-
-if __name__ == "__main__" :
-    args = sys.argv
-
-    if len(args) <= 1 :
-        error("Usage: py LexicographicPermutations.py <weight> [<opts>]")
-
-    opts = getOpts(args)
-    weight = toFloat(args[1])
-    macros = macros(convertWeight(weight, opts["unit"]), opts)
-
-    print(macros)

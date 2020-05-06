@@ -4,9 +4,6 @@
     @date   2020-01-17
 """
 
-import sys
-from util.general import *
-
 def evenDivisors(nominator) :
     result = []
 
@@ -45,9 +42,3 @@ def findAmicablePairs (target) :
             pairSet.add(value)
 
     return sum(pairSet)
-
-if __name__ == "__main__" :
-    if len(sys.argv) != 2 :
-        error("Usage: amicableNumbers.py <top number>")
-
-    print(findAmicablePairs(toInteger(sys.argv[1])))

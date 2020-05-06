@@ -7,7 +7,7 @@
 import os
 import sys
 
-from util.general import error
+from . import error
 
 def readNames(fileName) :
     lines = []
@@ -56,11 +56,3 @@ def sumNamesScores(fileName) :
     nameScores = scores(sorted(names))
 
     return sum(nameScores)
-
-if __name__ == "__main__" :
-    args = sys.argv
-
-    if len(args) != 2 :
-        error("Usage: python NamesScores.py <file_name>")
-
-    print(sumNamesScores(args[1]))

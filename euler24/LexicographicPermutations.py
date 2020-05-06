@@ -4,9 +4,7 @@
     @date   2020-01-23
 """
 
-import sys
-from util.general import error, NotYetImplemented
-from util.string import swapChars
+from . import error, NotYetImplemented, swapChars
 
 def collectPermutations(string, permutations, i, length) :
 
@@ -24,11 +22,3 @@ def findPermutations(string) :
 
     permutations = []
     collectPermutations(string, permutations, 0, len(string))
-
-if __name__ == "__main__" :
-    args = sys.argv
-
-    if len(args) >= 2 :
-        error("Usage: py LexicographicPermutations.py.")
-
-    print(findPermutations("0123456789"))

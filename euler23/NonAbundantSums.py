@@ -4,8 +4,7 @@
     @date   2020-01-18
 """
 
-import sys
-from util.general import error, toInteger
+from . import error, toInteger
 
 def properDivisors(number) :
     result = set()
@@ -55,9 +54,3 @@ def findNonAbundantSum(target) :
     abundants = findAbundants(target)
     abundantSums = getSums(abundants, target)
     return sum(getMissing(abundantSums, target))
-
-if __name__ == "__main__" :
-    if len(sys.argv) != 2 :
-        error("Usage: python NonAbundantSums.py <target number>.")
-
-    print(findNonAbundantSum(toInteger(sys.argv[1])))
