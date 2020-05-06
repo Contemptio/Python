@@ -32,7 +32,7 @@ def partition(value, values) :
 
     return result
 
-def printResult(result) :
+def printResult(result, values) :
     formatting = '%' + str(len(str(max(values))) + 1) + 'i'
 
     for key, value in result.items() :
@@ -59,4 +59,3 @@ if __name__ == "__main__" :
 
     if len(args) != 2 :
         error("Usage: python Heroes3.py <folder name>")
-
